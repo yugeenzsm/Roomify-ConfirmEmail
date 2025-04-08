@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Email Confirmation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      background-color: #f9f9f9;
+    }
+    .message {
+      font-size: 1.6em;
+      color: #2d3436;
+    }
+    .success {
+      color: #27ae60;
+    }
+    .error {
+      color: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+  <div class="message" id="message">Checking confirmation...</div>
+
+  <script>
+    const url = new URL(window.location.href);
+    const accessToken = url.searchParams.get('access_token');
+    const type = url.searchParams.get('type');
+
+    const messageEl = document.getElementById('message');
+
+    if (type === 'signup' && accessToken) {
+      messageEl.textContent = '🎉 Your email has been successfully confirmed!';
+      messageEl.classList.add('success');
+    } else {
+      messageEl.textContent = '⚠️ Unable to confirm your email. Please try again.';
+      messageEl.classList.add('error');
+    }
+  </script>
+</body>
+</html>
