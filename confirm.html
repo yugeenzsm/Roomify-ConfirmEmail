@@ -28,12 +28,12 @@
 
   <script>
     const url = new URL(window.location.href);
-    const accessToken = url.searchParams.get('access_token');
+    const accessToken = url.searchParams.get('code');
     const type = url.searchParams.get('type');
 
     const messageEl = document.getElementById('message');
 
-    if (type === 'signup' && accessToken) {
+    if (accessToken) {
       messageEl.textContent = '🎉 Your email has been successfully confirmed!';
       messageEl.classList.add('success');
     } else {
